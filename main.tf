@@ -15,3 +15,13 @@ resource "aws_s3_bucket" "bucket2" {
     Name = "Demo Bucket 2"
   }
 }
+
+# create third S3 bucket for demo project
+resource "aws_s3_bucket" "demo_project_billion_1" {
+  bucket = "demo-project-billion-1"
+
+  tags = {
+    Name        = "Demo Project Billion 1"
+    Environment = "dev"
+  }
+}
