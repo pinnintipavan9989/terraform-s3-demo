@@ -15,3 +15,22 @@ resource "aws_s3_bucket" "bucket2" {
     Name = "Demo Bucket 2"
   }
 }
+
+# create the required demo bucket in us-east-1
+resource "aws_s3_bucket" "demo_bucket" {
+  bucket = "demo-mission-12-us-east-1"
+
+  tags = {
+    Name = "Demo Mission Bucket"
+  }
+}
+
+# upload a demo.txt file into the demo bucket
+resource "aws_s3_object" "demo_txt" {
+  bucket = aws_s3_bucket.demo_bucket.id
+  key    = "demo.txt"
+
+  content = "Demo file content"
+
+  # No ACL is set; defaults to bucket-owner enforced ownership
+}
